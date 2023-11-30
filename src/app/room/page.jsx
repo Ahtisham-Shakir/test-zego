@@ -1,9 +1,14 @@
 "use client";
 
 import React, { useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 
 const RoomPage = () => {
   const roomID = "123";
+
+  const searchParams = useSearchParams();
+  const meetingType = searchParams.get("meetingType");
+  console.log(meetingType);
 
   useEffect(() => {
     const loadZegoUIKitPrebuilt = async () => {
@@ -26,6 +31,12 @@ const RoomPage = () => {
           );
           const zp = ZegoUIKitPrebuilt.create(kitToken);
           zp.joinRoom({
+            ...(meetingType === "audio" && {
+              turnOnCameraWhenJoining: false,
+              showMyCameraToggleButton: false,
+              showAudioVideoSettingsButton: false,
+              showScreenSharingButton: false,
+            }),
             showScreenSharingButton: false,
             preJoinViewConfig: {
               title: "Join Appointment with wahab",
@@ -44,7 +55,8 @@ const RoomPage = () => {
                   "//" +
                   window.location.host +
                   window.location.pathname +
-                  "?roomID=" +
+                  `?meetingType=${meetingType}` +
+                  "&roomID=" +
                   roomID,
               },
             ],
@@ -86,3 +98,9 @@ export default RoomPage;
 //   userList.forEach(user => {
 //       user.setUserAvatar("https://xxx.xxx.xx/xx.png")
 //   })
+
+// use these props for audio call
+// turnOnCameraWhenJoining: false,
+// showMyCameraToggleButton: false,
+// showAudioVideoSettingsButton: false,
+// showScreenSharingButton: false;
