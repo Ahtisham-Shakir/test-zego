@@ -21,7 +21,8 @@ const RoomPage = () => {
             appID,
             serverSecret,
             roomID,
-            Date.now().toString()
+            Date.now().toString(),
+            "Wahab Bhai"
           );
           const zp = ZegoUIKitPrebuilt.create(kitToken);
           zp.joinRoom({
