@@ -40,7 +40,7 @@ const RoomPage = () => {
               },
             ],
             scenario: {
-              mode: ZegoUIKitPrebuilt.GroupCall,
+              mode: ZegoUIKitPrebuilt.OneONoneCall,
             },
           });
         }
