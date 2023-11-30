@@ -26,6 +26,13 @@ const RoomPage = () => {
           );
           const zp = ZegoUIKitPrebuilt.create(kitToken);
           zp.joinRoom({
+            showScreenSharingButton: false,
+            preJoinViewConfig: {
+              title: "Join Appointment with wahab",
+            },
+            showTextChat: false,
+            branding:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTM0I2z8hvE856oMv5moIbPntQi9MPJF3nesQJMobwfC0cQ4HV_Mg_bfZa25a3ydjI9mU&usqp=CAU",
             container: element,
             sharedLinks: [
               {
